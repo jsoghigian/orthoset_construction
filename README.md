@@ -34,11 +34,14 @@ Thus, our taxonomic ID for Coleoptera will is 7041.
 ### DOWNLOADING ORTHOGROUPS FOR THAT LEVEL
 Given a taxonomic ID, and thresholds for universitality and single copyness, the script ortho_dl.sh will download the orthogroups as unaligned fasta files per orthogroup and store them within a subdirectory.  These fasta files are suitable for alignment and analysis, but will contain orthoDB header information instead of identifiable species epithets.  Later outputs of this pipeline will provide fasta files for alignment with recognizable species epithets.
 1) While in the directory where you want your single copy orthologs to be downloaded and processed, run the orthodl script as below:
+
 ```sh ortho_dl.sh coloeoptera 7041 0.8 0.8```  
 
 This command will retrieve the orthogroup identifierss associated with taxonomic ID 7041 that are single copy in 80% of the genomes at that level.  The prefix name coleoptera is used to identify this particular set of downloads, and a subdirectory will be made called coleoptera_orthologs to store the results of this script.  See the header information in ortho_dl.sh for additional information.
 
 This can take a while, depending on the number of orthogroups and number of reference species, and requires an active internet connection.  
+
+2) Once the script completes, let's take a look at what 
 
 ### PROCESSING ORTHOGROUPS
 
