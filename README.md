@@ -9,12 +9,30 @@ For now, only tutorials involving gene sets from OrthoDB are presented. However,
 
 We have a manuscript in preparation where we demonstrate the utility of these catalogs in evaluating denovo genome sequencing data from museum specimens.  More details to come soon.
 
+## INSTALLATION
+Just place the shell scripts and python scripts in the same directory, and feel free to run them from anywhere, add them to your path, etc.  Just always keep the shell and python scripts in the same directory.
+
 ## QUICK START GUIDE FOR DOWNLOADING FROM ORTHODB
-To Be Written
-### IDENTIFYING TAXONOMIC LEVEL
+This quick start guide generates a set of files and directories suitable for phylogenomic analysis, or for the creation of an ortholog catalog usable by Orthograph. It assumes you have already downloaded and installed [Orthograph](https://github.com/mptrsen/Orthograph).
+
+This guide was written for OrthoDB version 10.1, and will hopefully be updated with additional OrthoDB versions as needed.
+
+### IDENTIFYING TAXONOMIC ID FROM ORTHODB
+This quickstart guide will walk through an example of downloading a set of orthologs for Coleoptera from OrthoDB. The first step is to identify the taxonomic level from OrthoDB.  OrthoDB contains a wide range of taxonomic levels for users to choose from.  To see what levels are available, from OrthoDB, click Advanced.  This will display the list of species and taxonomic groupings available.  Ortholog sets are available for taxonomic groupings of genomes that have  a box around their name, as in this example: 
+
+Now for the steps themselves:
+
+1) Navitage to OrthoDB.org . Click on Advanced to bring up the species/taxonomy selection screen, as shown above.
+2) Select Coleoptera by clicking the empty box next to the ID.   The number next to Coleoptera indicates there are 9 genomes present in this taxonomic category.  You may need to expand Eukaryota, Metazoa, Arthropoda, Hexapoda, Insecta, and Holometabola before you can click Coleoptera, depending on your previous browsing.  Once selected, the level Coleoptera will receive a checkmark, as will all associated taxonomic levels above the order.  click the submit button. 
+3) This page contains the set of orthologs associated with Coleoptera based on the default settings of the OrthoDB search.  The taxonomic ID is actually part of the URL of this page and is visible in a web browser.  We will revisit that momentarily.  With no filtering, there will be a total of 11817 orthogroups.  Click the back button to return to the previous OrthoDB page, and click Advanced. Coleoptera should still be selected; if it is not, re-select it.
+4) Under Phyloprofile, change the first drop down box to present in >80% of species; I will sometimes refer to this value as the universality of the orthologs.  Change the second drop down box to single copy in >80% of species.  Click submit.
+5) The set of orthologs displayed are those that are present *and* single copy in more than 80% of the genomes. The search result should list 739 orthogroups.  For your own analyses, carefully consider universality and single copy thresholds based on your research question and methods.
+6) Note the level and species ID in the URL bar, as below:
+
+Thus, our taxonomic ID for Coleoptera will is 7041.
 
 ### DOWNLOADING ORTHOGROUPS FOR THAT LEVEL
-
+Given a taxonomic ID, and thresholds for universitality and single copyness, the script 
 ### PROCESSING ORTHOGROUPS
 
 ### CREATING AN ORTHOGRAPH ORTHOLOG DATABASE
