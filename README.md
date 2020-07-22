@@ -37,7 +37,7 @@ Once selected, the level Coleoptera will receive a checkmark, as will all associ
 <center>
 <img src="https://github.com/jsoghigian/orthoset_construction/blob/master/example/fig3.png?raw=trueg" style="margin:5px 5px 5px 5px"> 
 </center>
-Thus, our taxonomic ID for Coleoptera will is 7041.
+Thus, our taxonomic ID for Coleoptera is 7041.
 
 ### DOWNLOADING ORTHOGROUPS FOR THAT LEVEL
 Given a taxonomic ID, and thresholds for universitality and single copyness, the script ortho_dl.sh will download the orthogroups as unaligned fasta files per orthogroup and store them within a subdirectory.  These fasta files are suitable for alignment and analysis, but will contain orthoDB header information instead of identifiable species epithets.  Later outputs of this pipeline will provide fasta files for alignment with recognizable species epithets.
