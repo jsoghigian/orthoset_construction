@@ -37,11 +37,21 @@ Given a taxonomic ID, and thresholds for universitality and single copyness, the
 
 ```sh ortho_dl.sh coloeoptera 7041 0.8 0.8```  
 
-This command will retrieve the orthogroup identifierss associated with taxonomic ID 7041 that are single copy in 80% of the genomes at that level.  The prefix name coleoptera is used to identify this particular set of downloads, and a subdirectory will be made called coleoptera_orthologs to store the results of this script.  See the header information in ortho_dl.sh for additional information.
+This command will retrieve the orthogroup identifiers associated with taxonomic ID 7041 that are single copy in 80% of the genomes at that level. The first argument, the prefix name, is an arbitrary identifier the user sets that will be used in this and subsequent steps to identify the particular ortholog catalog under construction.  In this case, the prefix name coleoptera is used to identify this particular set of downloads, and a subdirectory will be made called coleoptera_orthologs to store the results of this script.   See the header information in ortho_dl.sh for additional information.
 
 This can take a while, depending on the number of orthogroups and number of reference species, and requires an active internet connection.  
 
-2) Once the script completes, let's take a look at what 
+2) Once the script completes, let's take a look at the contents of one of the fasta files:
+
+```head colioptera_orthologs/3at7041.fasta```
+
+You may notice that the fasta headers begin with a code like 7070_0:000c5c . This identifies the species and gene ID in the OrthoDB database, but is not intelligible to us.  We'll translate that a bit later, based on the other header information, and a translation file.  
+
+Important note: These files contain potential paralogs/duplicated genes!
+
+```grep ">" colioptera_orthologs/3at7041.fasta```
+
+Note that multiple lines begin with 7539_0!  As such, this file must be processed to ensure that the duplicated genes are removed, leaving only putative single copy orthologs to build our orthogroups from.   It is important to keep in mind that with a single copy threshold below 1, some of the orthogroups in your analysis may have evidence of duplication events.  Alternatively, it is possible some of the duplicated genes are the result of bioinformatics-related circumstances such as misassemblies.  Regardless of the their origin, the processing script below will remove duplicated genes from fasta files.
 
 ### PROCESSING ORTHOGROUPS
 
