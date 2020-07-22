@@ -19,7 +19,9 @@ This guide was written for OrthoDB version 10.1, and will hopefully be updated w
 
 ### IDENTIFYING TAXONOMIC ID FROM ORTHODB
 This quickstart guide will walk through an example of downloading a set of orthologs for Coleoptera from OrthoDB. The first step is to identify the taxonomic level from OrthoDB.  OrthoDB contains a wide range of taxonomic levels for users to choose from.  To see what levels are available, from OrthoDB, click Advanced.  This will display the list of species and taxonomic groupings available.  Ortholog sets are available for taxonomic groupings of genomes that have  a box around their name, as in this example: 
-
+<center>
+<img src="https://github.com/jsoghigian/orthoset_construction/blob/master/example/ortho_db.png?raw=trueg" style="margin:5px 5px 5px 5px"> 
+</center>
 Now for the steps themselves:
 
 1) Navitage to OrthoDB.org . Click on Advanced to bring up the species/taxonomy selection screen, as shown above.
