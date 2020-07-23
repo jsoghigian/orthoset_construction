@@ -13,7 +13,17 @@ We have a manuscript in preparation where we demonstrate the utility of these ca
 Just place the shell scripts and python scripts in the same directory, and feel free to run them from anywhere, add them to your path, etc.  Just always keep the shell and python scripts in the same directory.
 
 ## QUICK START GUIDE FOR DOWNLOADING FROM ORTHODB
-This quick start guide generates a set of files and directories suitable for phylogenomic analysis, or for the creation of an ortholog catalog usable by Orthograph. It assumes you have already downloaded and installed [Orthograph](https://github.com/mptrsen/Orthograph).
+For a more detailed tutorial on the usage of these scripts, see below.
+
+1) Run the script ortho_dl.sh to download the orthologs at the target group of interest from OrthoDB:
+```sh ortho_dl.sh coloeoptera 7041 0.8 0.8```  
+
+2) Next, parse it with TO FILL IN.
+
+3) Once processed, add your new orthologs to Orthograph TO FILL IN
+
+## TUTORIAL FOR DOWNLOADING A SET OF COLEOPTERA ORTHOLOGS FROM ORTHODB
+This tutorial generates a set of files and directories suitable for phylogenomic analysis, or for the creation of an ortholog catalog usable by Orthograph. It assumes you have already downloaded and installed [Orthograph](https://github.com/mptrsen/Orthograph).
 
 This guide was written for OrthoDB version 10.1, and will hopefully be updated with additional OrthoDB versions as needed.
 
@@ -24,7 +34,7 @@ This quickstart guide will walk through an example of downloading a set of ortho
 </center>
 Now for the steps themselves:
 
-1) Navitage to OrthoDB.org . Click on Advanced to bring up the species/taxonomy selection screen, as shown above.
+1) Navitage to OrthoDB.org.  **Refresh the page to clear previous searches etc from cache**. Click on Advanced to bring up the species/taxonomy selection screen, as shown above.
 2) Select Coleoptera by clicking the empty box next to the ID.   The number next to Coleoptera indicates there are 9 genomes present in this taxonomic category.  You may need to expand Eukaryota, Metazoa, Arthropoda, Hexapoda, Insecta, and Holometabola before you can click Coleoptera, depending on your previous browsing.  
 <center>
 <img src="https://github.com/jsoghigian/orthoset_construction/blob/master/example/fig2.png?raw=trueg" style="margin:5px 5px 5px 5px"> 
