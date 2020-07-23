@@ -41,8 +41,8 @@ Now for the steps themselves:
 </center>
 Once selected, the level Coleoptera will receive a checkmark, as will all associated taxonomic levels above the order, as above.  Click the Submit button. 
 3) This page contains the set of orthologs associated with Coleoptera based on the default settings of the OrthoDB search.  The taxonomic ID is actually part of the URL of this page and is visible in a web browser.  We will revisit that momentarily.  With no filtering, there will be a total of 11817 orthogroups.  Click the back button to return to the previous OrthoDB page, and click Advanced. Coleoptera should still be selected; if it is not, re-select it.
-4) Under Phyloprofile, change the first drop down box to present in >80% of species; I will sometimes refer to this value as the universality of the orthologs.  Change the second drop down box to single copy in >80% of species.  Click submit.
-5) The set of orthologs displayed are those that are present *and* single copy in more than 80% of the genomes. The search result should list 739 orthogroups.  For your own analyses, carefully consider universality and single copy thresholds based on your research question and methods.
+4) Under Phyloprofile, change the first drop down box to present in all species; I will sometimes refer to this value as the universality of the orthologs.  Change the second drop down box to single copy in all species.  Click submit.
+5) The set of orthologs displayed are those that are present *and* single copy in all the genomes. The search result should list 2689 orthogroups.  For your own analyses, carefully consider universality and single copy thresholds based on your research question and methods. 
 6) Note the level and species ID in the URL bar, as below:
 <center>
 <img src="https://github.com/jsoghigian/orthoset_construction/blob/master/example/fig3.png?raw=trueg" style="margin:5px 5px 5px 5px"> 
@@ -53,9 +53,9 @@ Thus, our taxonomic ID for Coleoptera is 7041.
 Given a taxonomic ID, and thresholds for universitality and single copyness, the script ortho_dl.sh will download the orthogroups as unaligned fasta files per orthogroup and store them within a subdirectory.  These fasta files are suitable for alignment and analysis, but will contain orthoDB header information instead of identifiable species epithets.  Later outputs of this pipeline will provide fasta files for alignment with recognizable species epithets.
 1) While in the directory where you want your single copy orthologs to be downloaded and processed, run the orthodl script as below:
 
-```sh ortho_dl.sh coloeoptera 7041 0.8 0.8```  
+```sh ortho_dl.sh coloeoptera 7041 1 0.9```  
 
-This command will retrieve the orthogroup identifiers associated with taxonomic ID 7041 that are single copy in 80% of the genomes at that level. The first argument, the prefix name, is an arbitrary identifier the user sets that will be used in this and subsequent steps to identify the particular ortholog catalog under construction.  In this case, the prefix name coleoptera is used to identify this particular set of downloads, and a subdirectory will be made called coleoptera_orthologs to store the results of this script.   See the header information in ortho_dl.sh for additional information.
+This command will retrieve the orthogroup identifiers associated with taxonomic ID 7041 that are single copy in all genomes at that level. The first argument, the prefix name, is an arbitrary identifier the user sets that will be used in this and subsequent steps to identify the particular ortholog catalog under construction.  In this case, the prefix name coleoptera is used to identify this particular set of downloads, and a subdirectory will be made called coleoptera_orthologs to store the results of this script.   See the header information in ortho_dl.sh for additional information.
 
 This can take a while, depending on the number of orthogroups and number of reference species, and requires an active internet connection.  
 
