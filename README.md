@@ -22,43 +22,43 @@ For a more detailed tutorial on the usage of these scripts, see below.
 
 3) Once processed, add your new orthologs to Orthograph TO FILL IN
 
-## TUTORIAL FOR DOWNLOADING A SET OF COLEOPTERA ORTHOLOGS FROM ORTHODB
+## TUTORIAL FOR DOWNLOADING A SET OF ARACHNIDA ORTHOLOGS FROM ORTHODB
 This tutorial generates a set of files and directories suitable for phylogenomic analysis, or for the creation of an ortholog catalog usable by Orthograph. It assumes you have already downloaded and installed [Orthograph](https://github.com/mptrsen/Orthograph).
 
 This guide was written for OrthoDB version 10.1, and will hopefully be updated with additional OrthoDB versions as needed.
 
 ### IDENTIFYING TAXONOMIC ID FROM ORTHODB
-This quickstart guide will walk through an example of downloading a set of orthologs for Coleoptera from OrthoDB. The first step is to identify the taxonomic level from OrthoDB.  OrthoDB contains a wide range of taxonomic levels for users to choose from.  To see what levels are available, from OrthoDB, click Advanced.  This will display the list of species and taxonomic groupings available.  Ortholog sets are available for taxonomic groupings of genomes that have  a box around their name, as in this example: 
+This quickstart guide will walk through an example of downloading a set of orthologs for Arachnida from OrthoDB. The first step is to identify the taxonomic level from OrthoDB.  OrthoDB contains a wide range of taxonomic levels for users to choose from.  To see what levels are available, from OrthoDB, click Advanced.  This will display the list of species and taxonomic groupings available.  Ortholog sets are available for taxonomic groupings of genomes that have  a box around their name, as in this example: 
 <center>
 <img src="https://github.com/jsoghigian/orthoset_construction/blob/master/example/ortho_db.png?raw=trueg" style="margin:5px 5px 5px 5px"> 
 </center>
 Now for the steps themselves:
 
 1) Navitage to OrthoDB.org.  **Refresh the page to clear previous searches etc from cache**. Click on Advanced to bring up the species/taxonomy selection screen, as shown above.
-2) Select Coleoptera by clicking the empty box next to the ID.   The number next to Coleoptera indicates there are 9 genomes present in this taxonomic category.  You may need to expand Eukaryota, Metazoa, Arthropoda, Hexapoda, Insecta, and Holometabola before you can click Coleoptera, depending on your previous browsing.  
+2) Select Arachnida by clicking the empty box next to the ID.   The number next to Arachnida indicates there are 10 genomes present in this taxonomic category.  You may need to expand Eukaryota, Metazoa, and Arthropoda before you can click Arachnida, depending on your previous browsing.  
 
 <center>
 <img src="https://github.com/jsoghigian/orthoset_construction/blob/master/example/fig2.png?raw=trueg" style="margin:5px 5px 5px 5px"> 
 </center>
 
-Once selected, the level Coleoptera will receive a checkmark, as will all associated taxonomic levels above the order, as above.  Click the Submit button. 
+Once selected, the level Arachnida will receive a checkmark, as will all associated taxonomic levels above the order, as above.  Click the Submit button. 
 
-3) This page contains the set of orthologs associated with Coleoptera based on the default settings of the OrthoDB search.  The taxonomic ID is actually part of the URL of this page and is visible in a web browser.  We will revisit that momentarily.  With no filtering, there will be a total of 11817 orthogroups.  Click the back button to return to the previous OrthoDB page, and click Advanced. Coleoptera should still be selected; if it is not, re-select it.
-4) Under Phyloprofile, change the first drop down box to present in all species; I will sometimes refer to this value as the universality of the orthologs.  Change the second drop down box to single copy in all species.  Click submit.
-5) The set of orthologs displayed are those that are present *and* single copy in all the genomes. The search result should list 2689 orthogroups.  For your own analyses, carefully consider universality and single copy thresholds based on your research question and methods. 
+3) This page contains the set of orthologs associated with Arachnida based on the default settings of the OrthoDB search.  The taxonomic ID is actually part of the URL of this page and is visible in a web browser.  We will revisit that momentarily.  With no filtering, there will be a total of 16575 orthogroups.  Click the back button to return to the previous OrthoDB page, and click Advanced. Arachnida should still be selected; if it is not, re-select it.
+4) Under Phyloprofile, change the first drop down box to present in all species; I will sometimes refer to this value as the universality of the orthologs.  Change the second drop down box to single copy in >90% of species.  Click submit.
+5) The set of orthologs displayed are those that are present in all Arachinda genomes on OrthoDB, *and* single copy in 90% of those genomes. The search result should list 1580 orthogroups.  For your own analyses, carefully consider universality and single copy thresholds based on your research question and methods. 
 6) Note the level and species ID in the URL bar, as below:
 
 <center>
 <img src="https://github.com/jsoghigian/orthoset_construction/blob/master/example/fig3.png?raw=trueg" style="margin:5px 5px 5px 5px"> 
 </center>
 
-Thus, our taxonomic ID for Coleoptera is 7041.
+Thus, our taxonomic ID for Arachnida is 6854.
 
 ### DOWNLOADING ORTHOGROUPS FOR THAT LEVEL
 Given a taxonomic ID, and thresholds for universitality and single copyness, the script ortho_dl.sh will download the orthogroups as unaligned fasta files per orthogroup and store them within a subdirectory.  These fasta files are suitable for alignment and analysis, but will contain orthoDB header information instead of identifiable species epithets.  Later outputs of this pipeline will provide fasta files for alignment with recognizable species epithets.
 1) While in the directory where you want your single copy orthologs to be downloaded and processed, run the orthodl script as below:
 
-```sh ortho_dl.sh coloeoptera 7041 1 0.9```  
+```sh ortho_dl.sh coloeoptera 6854 1 0.9```  
 
 This command will retrieve the orthogroup identifiers associated with taxonomic ID 7041 that are single copy in all genomes at that level. The first argument, the prefix name, is an arbitrary identifier the user sets that will be used in this and subsequent steps to identify the particular ortholog catalog under construction.  In this case, the prefix name coleoptera is used to identify this particular set of downloads, and a subdirectory will be made called coleoptera_orthologs to store the results of this script.   See the header information in ortho_dl.sh for additional information.
 
