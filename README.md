@@ -66,16 +66,30 @@ This can take a while, depending on the number of orthogroups and number of refe
 
 2) Once the script completes, let's take a look at the contents of one of the fasta files:
 
-```head colioptera_orthologs/3at7041.fasta```
+```head arachnida_orthologs/2at6854.fasta```
 
-You may notice that the fasta headers begin with a code like 7070_0:000c5c . This identifies the species and gene ID in the OrthoDB database, but is not intelligible to us.  We'll translate that a bit later, based on the other header information, and a translation file.  
+You may notice that the fasta headers begin with a code like 6945_0:003757 . This identifies the species and gene ID in the OrthoDB database, but is not intelligible to us. We'll translate that a bit later, based on the other header information, and a translation file.
+```grep ">" arachnida_orthologs/2at6854.fasta```
 
-Important note: These files contain potential paralogs/duplicated genes!
-
-```grep ">" colioptera_orthologs/3at7041.fasta```
-
-Note that multiple lines begin with 7539_0!  As such, this file must be processed to ensure that the duplicated genes are removed, leaving only putative single copy orthologs to build our orthogroups from.   It is important to keep in mind that with a single copy threshold below 1, some of the orthogroups in your analysis may have evidence of duplication events.  Alternatively, it is possible some of the duplicated genes are the result of bioinformatics-related circumstances such as misassemblies.  Regardless of the their origin, the processing script below will remove duplicated genes from fasta files.
+Note that multiple lines begin with 114398_0 ! This means that Orthogroup 2at6854 contains two genes originated in the species with ID 114398_0. As such, this file must be processed to ensure that the duplicated genes are removed, leaving only putative single copy orthologs to build our orthogroups from. It is important to keep in mind that with a single copy threshold below 1, some of the orthogroups in your analysis may have evidence of duplication events. Alternatively, it is possible some of the duplicated genes are the result of bioinformatics-related circumstances such as misassemblies. Regardless of the their origin, the processing script below will remove duplicated genes from fasta files.
 
 ### PROCESSING ORTHOGROUPS
+Next we process our orthogroups to prepare them for Orthograph.  This involves: 
+
+1) Fixing headers to be easier to read (and import to Orthograph!)
+2) Removing any any species from an orthogroup with evidence of a duplication event
+3) Updating the species IDs to match the actual species IDs, rather than OrthoDB's IDs
+4) Making a single fasta file per species containing all single copy orthologs for that species, with headers corresponding to gene names and orthograph IDs
+5) Making a TSV containing the connections between orthogroups, species, and gene names in the fasta file headers - a "COG" file needed by Orthograph - and finally
+6) Ensuring the input files we will add to Orthograph have the same number of entries in the COG file as in the fasta file for each species.
+
+This is all accomplished by the ortho_process script, as demonstrated below:
+
+```sh ortho_process.sh arachnida```
+
+How did the script do?  Well, we can check it out.  Inside the arachnida_orthologs directory there should be one .faa and one .log file for each reference.  This particular version of OrthoDB has 10 Arachnida references.
+
+```ls arachnida_orthologs/*.faa```
+```ls arachnida_orthologs/*.log```
 
 ### CREATING AN ORTHOGRAPH ORTHOLOG DATABASE
