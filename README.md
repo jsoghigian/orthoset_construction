@@ -89,7 +89,7 @@ This is all accomplished by the ortho_process script, as demonstrated below:
 
 How did the script do?  Well, we can check it out.  Inside the arachnida_orthologs directory there should be one .faa and one .log file for each reference.  This particular version of OrthoDB has 10 Arachnida references.
 
-```ls arachnida_orthologs/*.faa```
+```ls arachnida_orthologs/*.faa```  
 ```ls arachnida_orthologs/*.log```
 
 ### CREATING AN ORTHOGRAPH ORTHOLOG DATABASE
