@@ -38,7 +38,7 @@ Now for the steps themselves:
 2) Select Arachnida by clicking the empty box next to the ID.   The number next to Arachnida indicates there are 10 genomes present in this taxonomic category.  You may need to expand Eukaryota, Metazoa, and Arthropoda before you can click Arachnida, depending on your previous browsing.  
 
 <center>
-<img src="https://github.com/jsoghigian/orthoset_construction/blob/master/example/arach1.png?raw=trueg" style="margin:5px 5px 5px 5px"> 
+<img src="https://github.com/jsoghigian/orthoset_construction/blob/master/arach1.png?raw=trueg" style="margin:5px 5px 5px 5px"> 
 </center>
 
 Once selected, the level Arachnida will receive a checkmark, as will all associated taxonomic levels above the order, as above.  Click the Submit button. 
@@ -49,7 +49,7 @@ Once selected, the level Arachnida will receive a checkmark, as will all associa
 6) Note the level and species ID in the URL bar, as below:
 
 <center>
-<img src="https://github.com/jsoghigian/orthoset_construction/blob/master/example/arach2.png?raw=trueg" style="margin:5px 5px 5px 5px"> 
+<img src="https://github.com/jsoghigian/orthoset_construction/blob/master/arach2.png?raw=trueg" style="margin:5px 5px 5px 5px"> 
 </center>
 
 Thus, our taxonomic ID for Arachnida is 6854.
