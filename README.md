@@ -45,7 +45,7 @@ Once selected, the level Arachnida will receive a checkmark, as will all associa
 
 3) This page contains the set of orthologs associated with Arachnida based on the default settings of the OrthoDB search.  The taxonomic ID is actually part of the URL of this page and is visible in a web browser.  We will revisit that momentarily.  With no filtering, there will be a total of 16575 orthogroups.  Click the back button to return to the previous OrthoDB page, and click Advanced. Arachnida should still be selected; if it is not, re-select it.
 4) Under Phyloprofile, change the first drop down box to present in all species; I will sometimes refer to this value as the universality of the orthologs.  Change the second drop down box to single copy in >90% of species.  Click submit.
-5) The set of orthologs displayed are those that are present in all Arachinda genomes on OrthoDB, *and* single copy in 90% of those genomes. The search result should list 1580 orthogroups.  For your own analyses, carefully consider universality and single copy thresholds based on your research question and methods. 
+5) The set of orthologs displayed are those that are present in all Arachinda genomes on OrthoDB, *and* single copy in 90% of those genomes. The search result should list 2342 orthogroups.  For your own analyses, carefully consider universality and single copy thresholds based on your research question and methods.  Note that the number shown in the web preview will vary slightly with the number retrieved from online databases due to slight differences in inclusions, a minor issue that OrthoDB is aware of and plans to fix in the future.
 6) Note the level and species ID in the URL bar, as below:
 
 <center>
@@ -58,9 +58,9 @@ Thus, our taxonomic ID for Arachnida is 6854.
 Given a taxonomic ID, and thresholds for universitality and single copyness, the script ortho_dl.sh will download the orthogroups as unaligned fasta files per orthogroup and store them within a subdirectory.  These fasta files are suitable for alignment and analysis, but will contain orthoDB header information instead of identifiable species epithets.  Later outputs of this pipeline will provide fasta files for alignment with recognizable species epithets.
 1) While in the directory where you want your single copy orthologs to be downloaded and processed, run the orthodl script as below:
 
-```sh ortho_dl.sh coloeoptera 6854 1 0.9```  
+```sh ortho_dl.sh arachnida 6854 1 0.9```  
 
-This command will retrieve the orthogroup identifiers associated with taxonomic ID 7041 that are single copy in all genomes at that level. The first argument, the prefix name, is an arbitrary identifier the user sets that will be used in this and subsequent steps to identify the particular ortholog catalog under construction.  In this case, the prefix name coleoptera is used to identify this particular set of downloads, and a subdirectory will be made called coleoptera_orthologs to store the results of this script.   See the header information in ortho_dl.sh for additional information.
+This command will retrieve the orthogroup identifiers associated with taxonomic ID 6854 that are single copy in all genomes at that level. The first argument, the prefix name, is an arbitrary identifier the user sets that will be used in this and subsequent steps to identify the particular ortholog catalog under construction.  In this case, the prefix name coleoptera is used to identify this particular set of downloads, and a subdirectory will be made called coleoptera_orthologs to store the results of this script.   See the header information in ortho_dl.sh for additional information.
 
 This can take a while, depending on the number of orthogroups and number of reference species, and requires an active internet connection.  
 
@@ -80,7 +80,7 @@ Next we process our orthogroups to prepare them for Orthograph.  This involves:
 2) Removing any any species from an orthogroup with evidence of a duplication event
 3) Updating the species IDs to match the actual species IDs, rather than OrthoDB's IDs
 4) Making a single fasta file per species containing all single copy orthologs for that species, with headers corresponding to gene names and orthograph IDs
-5) Making a TSV containing the connections between orthogroups, species, and gene names in the fasta file headers - a "COG" file needed by Orthograph - and finally
+5) Making a TSV containing the connections between orthogroups, species, and gene names in the fasta file headers - a Cluster of Orthologous Groups (COG) file needed by Orthograph - and finally
 6) Ensuring the input files we will add to Orthograph have the same number of entries in the COG file as in the fasta file for each species.
 
 This is all accomplished by the ortho_process script, as demonstrated below:
@@ -92,4 +92,11 @@ How did the script do?  Well, we can check it out.  Inside the arachnida_ortholo
 ```ls arachnida_orthologs/*.faa```  
 ```ls arachnida_orthologs/*.log```
 
+To create the full single COG file of all taxa, type:
+```cat *.log > tax_for_orthograph.cog```
+And use the resulting tax_for_orthograph.cog file for importing gene and ortholog associations to Orthograph.
+
 ### CREATING AN ORTHOGRAPH ORTHOLOG DATABASE
+
+The ortholog database is ready to be created in Orthograph!  As Orthograph requires its own installation instructions, head on over to https://github.com/mptrsen/Orthograph for details on how to install and run Orthograph, and to configure your own Ortholog database from the input files we've generated here!
+
