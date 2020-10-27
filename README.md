@@ -93,7 +93,9 @@ How did the script do?  Well, we can check it out.  Inside the arachnida_ortholo
 ```ls arachnida_orthologs/*.log```
 
 To create the full single COG file of all taxa, type:
+
 ```cat *.log > tax_for_orthograph.cog```
+
 And use the resulting tax_for_orthograph.cog file for importing gene and ortholog associations to Orthograph.
 
 ### CREATING AN ORTHOGRAPH ORTHOLOG DATABASE
