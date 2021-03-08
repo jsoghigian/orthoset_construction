@@ -18,9 +18,10 @@ For a more detailed tutorial on the usage of these scripts, see below.
 1) Run the script ortho_dl.sh to download the orthologs at the target group of interest from OrthoDB:
 ```sh ortho_dl.sh coloeoptera 7041 0.8 0.8```  
 
-2) Next, parse it with TO FILL IN.
+2) Next, parse the fasta files to adjust headers as necessary:
+```sh ortho_process.sh coleoptera``` 
 
-3) Once processed, add your new orthologs to Orthograph TO FILL IN
+3) Once processed, add your new orthologs to Orthograph, or use them as a reference catalog in your own favorite software tools.  Remember to create appropriate catalogs of ortholog files.
 
 ## TUTORIAL FOR DOWNLOADING A SET OF ARACHNIDA ORTHOLOGS FROM ORTHODB
 This tutorial generates a set of files and directories suitable for phylogenomic analysis, or for the creation of an ortholog catalog usable by Orthograph. It assumes you have already downloaded and installed [Orthograph](https://github.com/mptrsen/Orthograph).
