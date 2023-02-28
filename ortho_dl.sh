@@ -2,7 +2,7 @@
 SCRIPTPATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 echo $SCRIPTPATH
 #This script is part of the ortholog construction pipeline written by J. Soghigian.
-#It was last edited on 7/13/2020
+#It was last edited on 2023-02-28
 #This script will download all the fasta files belonging to a taxonomic level that meets user-specified thresholds of inclusion for universality and single-copy nature.  
 #Usage:
 #sh ortho_dl.sh prefix_name level universality level_of_single_copy
