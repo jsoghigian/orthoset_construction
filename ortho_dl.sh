@@ -19,7 +19,7 @@ level=$2
 uni=$3
 sc=$4
 
-wget -O ${ogprefix}.uni0.9single0.9.fasta "https://www.orthodb.org//search?query=&level=${level}&species=${level}&universal=${uni}&singlecopy=${sc}&limit=10000"
+curl -o ${ogprefix}.uni0.9single0.9.fasta "https://data.orthodb.org/current/search?query=&level=${level}&species=${level}&universal=${uni}&singlecopy=${sc}&take=100000"
 #We will now process this file so that it can be fed into a loop.  This will allow us to download each fasta file individually for each ortholog.
 
 cat ${ogprefix}.uni0.9single0.9.fasta | awk -F"[" '{print $2}' | awk -F"]" '{print $1}' | sed 's/"//g' | perl -pe 's/, /\n/g' > ${ogprefix}.listoffasta
@@ -32,7 +32,7 @@ mkdir ${ogprefix}_orthologs
 
 #now we loop over the aforementioned list of fasta file and download each orthogroup's fasta file.  Note that this URL may change as orthoDB changes their URLs.  Consult orthoDB for more information.
 
-for line in `cat  ${ogprefix}.listoffasta`; do curl 'https://v101.orthodb.org/fasta?id='"${line}"'&species='all'' -o  ${ogprefix}_orthologs/${line}.fasta; sleep 2;done
+for line in `cat  ${ogprefix}.listoffasta`; do curl 'https://data.orthodb.org/current/fasta?id='"${line}"'&species='all'' -o  ${ogprefix}_orthologs/${line}.fasta; sleep 2;done
 
 rm ${ogprefix}.listoffasta
 rm ${ogprefix}.uni0.9single0.9.fasta
