@@ -57,7 +57,7 @@ do
   for ortho_file in `ls *.faa`;
   do
     taxa=$(basename ${ortho_file} .faa)
-    tax_name=$(grep -w $taxa ${SCRIPTPATH}/odb11v0_species.tab | awk -F " " '{ print $2 }')
+    tax_name=$(grep -w $taxa ${SCRIPTPATH}/odb11v0_species.tab | awk -F " " '{ print $3 }')
     mkdir ../../taxa/$tax_name 2> /dev/null
     cp $ortho_file ../../taxa/$tax_name/${orthogroup}.faa
   done
