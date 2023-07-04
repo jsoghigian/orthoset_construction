@@ -32,7 +32,7 @@ mkdir ${ogprefix}_orthologs
 
 #now we loop over the aforementioned list of fasta file and download each orthogroup's fasta file.  Note that this URL may change as orthoDB changes their URLs.  Consult orthoDB for more information.
 
-for line in `cat  ${ogprefix}.listoffasta`; do curl 'https://data.orthodb.org/current/fasta?id='"${line}"'&species='all'' -o  ${ogprefix}_orthologs/${line}.fasta; sleep 2;done
+for line in `cat  ${ogprefix}.listoffasta`; do curl 'https://data.orthodb.org/current/fasta?id='"${line}"' -o  ${ogprefix}_orthologs/${line}.fasta; sleep 2;done
 
 rm ${ogprefix}.listoffasta
 rm ${ogprefix}.uni0.9single0.9.fasta
