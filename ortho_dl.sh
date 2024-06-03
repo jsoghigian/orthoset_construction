@@ -2,7 +2,7 @@
 SCRIPTPATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 echo $SCRIPTPATH
 #This script is part of the ortholog construction pipeline written by J. Soghigian.
-#It was last edited on 2023-02-28
+#It was last edited on 2024-06-03
 #This script will download all the fasta files belonging to a taxonomic level that meets user-specified thresholds of inclusion for universality and single-copy nature.  
 #Usage:
 #sh ortho_dl.sh prefix_name level universality level_of_single_copy
@@ -15,6 +15,7 @@ ogprefix=$1
 
 #We will now use wget to download a list of fasta file IDs for a given taxonomic level (level=7147) and species/set of species (7147).  Consider adjusting the universal/single copy settings as desired - here, universality (presence in genomes) is set to 0.9, and threshold for single copy is also set to 0.9.  This means that of all the genomes at this taxonomic level, we include only orthologs found in 90% of the genomes, and of those, we include only orthologs that are single copy in at least 90% of genomes.  It is important to note that this WILL download duplicated genes (we take care of them later).
 #note if you are targetting a set of orthologs >10k, you'll need to adjust the limit we set as well.
+#also note that the universal and single copy levels can either be 1.0, 0.9, or 0.8 - I don't think other values work with orthodb.
 level=$2
 uni=$3
 sc=$4
@@ -32,7 +33,11 @@ mkdir ${ogprefix}_orthologs
 
 #now we loop over the aforementioned list of fasta file and download each orthogroup's fasta file.  Note that this URL may change as orthoDB changes their URLs.  Consult orthoDB for more information.
 
-for line in `cat  ${ogprefix}.listoffasta`; do curl 'https://data.orthodb.org/current/fasta?id='"${line}"' -o  ${ogprefix}_orthologs/${line}.fasta; sleep 2;done
+for line in $(cat  ${ogprefix}.listoffasta);
+do
+curl "https://data.orthodb.org/current/fasta?id=${line}&species=${level}" -o  ${ogprefix}_orthologs/${line}.fasta
+sleep 2
+done
 
 rm ${ogprefix}.listoffasta
 rm ${ogprefix}.uni0.9single0.9.fasta
