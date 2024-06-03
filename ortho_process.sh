@@ -1,10 +1,10 @@
 #!/bin/bash
 
 #This script is part of the ortholog construction pipeline written by J. Soghigian.
-#It was last edited on 7/13/2020
-#This script will take previously downloaded fasta sequences from OrthoDB and prepare them for input to Orthograph.
+#It was last edited on 2024-06-03
+#This script will take previously downloaded fasta sequences from OrthoDB and prepare them for input to Orthograph. See ortho_process.sh for more information.
 #It requires python 3 and biopython.
-#Note that this script refers to odb10v1.species.list.txt . This file could need to be changed if the odb version updates and new genomes are added.
+#Note that this script uses odb11v0_species.tab, a tab-delimited file used to identify the specify epithet from the taxonomy ID . This file could need to be changed if the odb version updates and new genomes are added.
 #In addition, this script attempts to dynamically find the location of the python helper scripts, split.py and fasta_uniqueonly_by_id.py . It assumes they are stored in the same directory as the script.  Please note that you can modify the SCRIPTPATH variable below should you wish to store those scripts elsewhere.
 #Usage:
 #sh ortho_process.sh prefix_name
