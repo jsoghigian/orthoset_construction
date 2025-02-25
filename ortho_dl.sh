@@ -20,7 +20,7 @@ level=$2
 uni=$3
 sc=$4
 
-curl -o ${ogprefix}.uni0.9single0.9.fasta "https://data.orthodb.org/current/search?query=&level=${level}&species=${level}&universal=${uni}&singlecopy=${sc}&take=100000"
+curl -o ${ogprefix}.uni0.9single0.9.fasta "https://data.orthodb.org/v12/search?query=&level=${level}&species=${level}&universal=${uni}&singlecopy=${sc}&take=100000"
 #We will now process this file so that it can be fed into a loop.  This will allow us to download each fasta file individually for each ortholog.
 
 cat ${ogprefix}.uni0.9single0.9.fasta | awk -F"[" '{print $2}' | awk -F"]" '{print $1}' | sed 's/"//g' | perl -pe 's/, /\n/g' > ${ogprefix}.listoffasta
